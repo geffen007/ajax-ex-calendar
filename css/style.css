@@ -1,0 +1,27 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.clearfix {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.container {
+    text-align: center;
+    margin: 0 auto;
+}
+
+button, h1 {
+    display: inline-block;
+    border: 0;
+    background-color: white;
+    cursor: pointer;
+}
+
+li.holiday {
+    color: red;
+}
