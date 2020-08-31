@@ -11,7 +11,7 @@ $(document).ready(function() {
 
     $('#next').click(function(){
             if (first<12){
-            $('ul').html('');
+            $('ul').empty();
             first++;
             var firstO = addZero(first);
             attributo = $('h1').attr('data-this-date', '2018-'+ firstO +'-01');
@@ -25,7 +25,7 @@ $(document).ready(function() {
 
     $('#prev').click(function(){
         if (first>1){
-            $('ul').html('');
+            $('ul').empty();
             first--;
             var firstO = addZero(first);
             attributo = $('h1').attr('data-this-date', '2018-'+ firstO +'-01');
