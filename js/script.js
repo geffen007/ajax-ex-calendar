@@ -1,42 +1,17 @@
 $(document).ready(function() {
 
-    var attributo = $('h1').attr('data-this-date');
 
-    var first = 1;
-
-    var currentDate = moment('2018-01-01');
+    var currentDate = moment($('h1').attr('data-this-date'));
 
     insertDays(currentDate);
     insertHolidays(currentDate);
 
     $('#next').click(function(){
-            if (first<12){
-            $('ul').empty();
-            first++;
-            var firstO = addZero(first);
-            attributo = $('h1').attr('data-this-date', '2018-'+ firstO +'-01');
-            attributo = moment($('h1').attr('data-this-date'));
-            insertDays(attributo);
-            insertHolidays(attributo);
-        } else {
-            alert('non puoi andare avanti');
-        }
+        next(currentDate);
     });
-
     $('#prev').click(function(){
-        if (first>1){
-            $('ul').empty();
-            first--;
-            var firstO = addZero(first);
-            attributo = $('h1').attr('data-this-date', '2018-'+ firstO +'-01');
-            attributo = moment($('h1').attr('data-this-date'));
-            insertDays(attributo);
-            insertHolidays(attributo);
-        } else {
-            alert('non puoi andare indietro');
-        }
+        prev(currentDate);
     });
-
 
 });
 
@@ -48,6 +23,7 @@ function addZero(number){
 }
 
 function insertDays(data){
+    $('ul').empty();
     var month = data.format('MMMM');
     var year = data.format('YYYY');
     $('h1.month').html(month + ' ' + year);
@@ -95,4 +71,23 @@ function insertHolidays(data){
             }
         }
     );
+}
+
+function next(data){
+    if(data.month() == 11){
+        alert('non puoi continuare');
+    }else{
+        data.add(1,'months');
+        insertDays(data);
+        insertHolidays(data);
+    }
+}
+function prev(data){
+    if( data.month() == 0){
+        alert('non puoi continuare');
+    }else{
+        data.subtract(1,'months');
+        insertDays(data);
+        insertHolidays(data);
+    }
 }
